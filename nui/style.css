@@ -32,7 +32,7 @@ body {
 }
 
 #cardSelector {
-    background-color: #444444;
+    background-color: #411665;
     border-radius: 10px;
 }
 
@@ -51,7 +51,7 @@ body {
 
 /* atm home screen */
 #ATMContainer {
-    background: #444444 !important;
+    background: #411665 !important;
     border-radius: 10px;
     min-height:800px;
     max-height:800px;
@@ -60,7 +60,7 @@ body {
 
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
     color: #fff;
-    background-color: #DC143C;
+    background-color: #411665;
 }
 
 a {
@@ -70,20 +70,20 @@ a {
 }
 
 a:hover {
-    color: #DC143C;
+    color: #411665;
     text-decoration: underline;
 }
 
 .btn-secondary2 {
     color: #fff;
-    background-color: #28a745;
-    border-color: #28a745;
+    background-color: #411665;
+    border-color: #411665;
 }
 
 .btn-secondary2:hover {
     color: #fff;
-    background-color: #218839;
-    border-color: #228d3b;
+    background-color: #411665;
+    border-color: #411665;
 }
 
 .btn-secondary2.focus,
@@ -148,8 +148,8 @@ a:hover {
 }
 
 .btn-primary:hover {
-    background-color: #1d7c33;
-    border-color: #1d7c33;
+    background-color: #411665;
+    border-color: #411665;
 }
 
 .btn-primary.focus,

@@ -22,11 +22,11 @@ window.addEventListener("message", function (event) {
         $("#successMessageATM").removeClass('alert-danger').addClass('alert-success');
         $("#withdrawATMError").css({"display":"none"});
         $("#withdrawATMErrorMsg").html('');
-        $("#currentBalanceATM1").html('$' + event.data.information.bankbalance);
+        $("#currentBalanceATM1").html('£' + event.data.information.bankbalance);
         $("#customerNameATM").html(event.data.information.name);
-        $("#currentBalanceATM").html('$' + event.data.information.bankbalance);
-        $("#currentCashBalanceATM").html('$' + event.data.information.cash);
-        $("#currentCashBalance1ATM").html('$' + event.data.information.cash);
+        $("#currentBalanceATM").html('£' + event.data.information.bankbalance);
+        $("#currentCashBalanceATM").html('£' + event.data.information.cash);
+        $("#currentCashBalance1ATM").html('£' + event.data.information.cash);
         $('#pinContainer').css({"display":"none"});
         $("#ATMContainer").css({"display":"block"});
     } else if(event.data.status == "closeATM") {
@@ -179,27 +179,26 @@ $( function() {
         }));
     });
 
-    document.querySelector('#withdrawAmountATM').addEventListener('keyup', (evt) => {
-        document.querySelector('[data-withdrawal=manual]').setAttribute('data-amount', evt.target.value);
-    });
-
-    document.querySelectorAll('[data-withdrawal]').forEach(function (element) {
-        element.addEventListener('click', (evt) => {
-            const amount = evt.target.getAttribute('data-amount');
-            const errorMessage = document.getElementById('withdrawATMErrorMsg');
-            errorMessage.classList.add('d-none');
-
-            if (amount == undefined || amount == null || amount <= 0) {
-                errorMessage.classList.remove('d-none');
-                return errorMessage.innerHTML = 'An error occurred with your withdrawal, please try again.';
-            }
-
+    $(document).on('click','[data-action=ATMwithdraw]',function(){
+        var amount = $(this).data('amount');
+        if(amount !== undefined && amount !== null && amount !== 0) {
             $.post("https://qb-atms/doATMWithdraw", JSON.stringify({
                 amount: parseInt(amount),
                 cid: clientCid,
                 cardnumber: cardNumb
             }));
-        });
+        }
+    });
+
+    $(document).on('click','#initiateWithdrawATM',function(){
+        var amount = $('#withdrawAmountATM').val();
+        if(amount !== undefined && amount !== null && amount !== 0) {
+            $.post("https://qb-atms/doATMWithdraw", JSON.stringify({
+                amount: parseInt(amount),
+                cid: clientCid,
+                cardnumber: cardNumb
+            }));
+        }
     });
 
     $(document).on('click','[data-act=enterNumber]',function(){
